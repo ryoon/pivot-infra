@@ -36,7 +36,11 @@ function check-svn-props() {
 
         ## Check for svn:mime-type
         SVN_MIME_TYPE=`svn pg svn:mime-type $f 2>/dev/null`
-        if [[ "$SVN_MIME_TYPE" != "$MIME_TYPE" && "$TYPE" != "text" ]]; then
+        if [ "$MIME_TYPE" == "application/xml" ]; then
+            if [ "$SVN_MIME_TYPE" != "text/xml" ]; then
+                echo "svn ps svn:mime-type text/xml $f"
+            fi
+        elif [[ "$SVN_MIME_TYPE" != "$MIME_TYPE" && "$TYPE" != "text" ]]; then
             echo "svn ps svn:mime-type $MIME_TYPE $f"
         fi
 
