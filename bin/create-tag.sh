@@ -95,27 +95,6 @@ create_tag() {
         echo "done"
     fi
 
-
-    ## Remove project folder from the release
-    printf "%-*s" 50 "Removing project folder from tag..."
-    svn rm tags/$tag/project &> /dev/null
-    if [ $? -ne 0 ]; then
-        echo "error"
-        echo "SVN remove failed"
-        echo
-        exit 1
-    else
-        svn up &> /dev/null
-        if [ $? -ne 0 ]; then
-            echo "error"
-            echo "SVN remove failed"
-            echo
-            exit 1
-        fi
-
-        echo "done"
-    fi
-
     echo
 
     printf "Submit tag (y/n)? [y] "
