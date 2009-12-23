@@ -28,11 +28,15 @@ sign_file() {
 sign_pom_bundle() {
     local NAME=$1
     sign_file $BUNDLE_ROOT/$NAME/pom.xml
+    cp $BUNDLE_ROOT/$NAME/pom.xml.asc $BUNDLE_ROOT/$NAME/$NAME-$VERSION.pom.asc
+    rm $BUNDLE_ROOT/$NAME/pom.xml.asc    
+    cp $BUNDLE_ROOT/$NAME/pom.xml.sha1 $BUNDLE_ROOT/$NAME/$NAME-$VERSION.pom.sha1
+    rm $BUNDLE_ROOT/$NAME/pom.xml.sha1
 }
 
 sign_jar_bundle() {
     local NAME=$1
-    sign_file $BUNDLE_ROOT/$NAME/pom.xml
+    sign_pom_bundle $NAME
     sign_file $BUNDLE_ROOT/$NAME/$NAME-$VERSION.jar
 }
 
