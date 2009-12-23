@@ -17,6 +17,11 @@
 ###
 
 VERSION=$1
+if [ "$VERSION" = "" ]; then
+    echo maven-deploy.sh: Must specify version number
+    exit
+fi
+
 BUNDLE_ROOT=maven/bundle
 
 sign_file() {
