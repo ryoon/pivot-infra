@@ -65,7 +65,7 @@ printf "Enter GPG passphrase: "
 read -s PASSPHRASE
 echo
 
-# ant clean package
+ant clean package
 
 rm -Rf $BUNDLE_ROOT
 mkdir -p $BUNDLE_ROOT
