@@ -79,6 +79,7 @@ create_bundle pivot
 # Generate project bundles
 create_project_bundle core
 create_project_bundle web
+create_project_bundle web-server
 create_project_bundle wtk
 create_project_bundle wtk-terra
 create_project_bundle charts
