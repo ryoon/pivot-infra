@@ -34,7 +34,7 @@ create_tag() {
     fi
 
     ## Check that we're at the root of the Pivot repository
-    pivot_root="https://svn.apache.org/repos/asf/incubator/pivot"
+    pivot_root="https://svn.apache.org/repos/asf/pivot"
     svn_url=`svn info | sed -n 's/URL: //p'`
     if [ "$svn_url" != "$pivot_root" ]; then
         echo "Error: Current folder is not the repository root"
