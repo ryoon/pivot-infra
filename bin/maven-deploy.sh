@@ -43,6 +43,7 @@ sign_jar_bundle() {
     local NAME=$1
     sign_pom_bundle $NAME
     sign_file $BUNDLE_ROOT/$NAME/$NAME-$VERSION.jar
+    sign_file $BUNDLE_ROOT/$NAME/$NAME-$VERSION-sources.jar
 }
 
 create_bundle() {
@@ -55,7 +56,9 @@ create_project_bundle() {
     mkdir $BUNDLE_ROOT/pivot-$NAME
     cp $NAME/pom.xml $BUNDLE_ROOT/pivot-$NAME/
     cp lib/pivot-$NAME-$VERSION.jar $BUNDLE_ROOT/pivot-$NAME/
+    cp lib/pivot-$NAME-$VERSION-sources.jar $BUNDLE_ROOT/pivot-$NAME/
     sign_jar_bundle pivot-$NAME
+
     create_bundle pivot-$NAME
 }
 
@@ -65,7 +68,9 @@ printf "Enter GPG passphrase: "
 read -s PASSPHRASE
 echo
 
+# Ant tasks
 ant clean package
+ant package-sources
 
 rm -Rf $BUNDLE_ROOT
 mkdir -p $BUNDLE_ROOT
@@ -83,3 +88,4 @@ create_project_bundle web-server
 create_project_bundle wtk
 create_project_bundle wtk-terra
 create_project_bundle charts
+
