@@ -16,6 +16,52 @@
 # limitations under the License.
 ###
 
+version=$1
+if [ "$version" = "" ]; then
+    echo $0: Must specify version number
+    exit
+fi
+
+bundle_root=maven/bundle
+
+sign_file() {
+    local name=$1
+    gpg --passphrase $passphrase --armor --detach-sig --quiet --yes $name &> /dev/null
+    openssl sha1 $name | sed 's/.*(\(.*\))= \(.*\)$/\2/' > $name.sha1
+}
+
+sign_pom_bundle() {
+    local name=$1
+    sign_file $bundle_root/$name/pom.xml
+    cp $bundle_root/$name/pom.xml.asc $bundle_root/$name/$name-$version.pom.asc
+    rm $bundle_root/$name/pom.xml.asc    
+    cp $bundle_root/$name/pom.xml.sha1 $bundle_root/$name/$name-$version.pom.sha1
+    rm $bundle_root/$name/pom.xml.sha1
+}
+
+sign_jar_bundle() {
+    local name=$1
+    sign_pom_bundle $name
+    sign_file $bundle_root/$name/$name-$version.jar
+    sign_file $bundle_root/$name/$name-$version-sources.jar
+}
+
+create_bundle() {
+    local name=$1
+    jar -cvf maven/$name-$version-bundle.jar -C $bundle_root/$name/ . &> /dev/null
+}
+
+create_project_bundle() {
+    local name=$1    
+    mkdir $bundle_root/pivot-$name
+    cp $name/pom.xml $bundle_root/pivot-$name/
+    cp lib/pivot-$name-$version.jar $bundle_root/pivot-$name/
+    cp lib/pivot-$name-$version-sources.jar $bundle_root/pivot-$name/
+    sign_jar_bundle pivot-$name
+
+    create_bundle pivot-$name
+}
+
 create_release() {
     ## TODO Check existence of JAVA_HOME
 
@@ -132,6 +178,29 @@ create_release() {
     ## Return to the base dir
     popd &> /dev/null
     popd &> /dev/null
+    
+    ## Generate the Maven bundles
+    printf "%-*s" 50 "Generating Maven bundles..."
+    ant package-sources &> /dev/null
+
+    ## Clean up any previous Maven artifacts    
+    rm -Rf $bundle_root
+    mkdir -p $bundle_root
+    
+    # Generate the root Maven bundle
+    mkdir $bundle_root/pivot
+    cp pom.xml $bundle_root/pivot/
+    sign_pom_bundle pivot
+    create_bundle pivot
+    
+    # Generate the Maven project bundles
+    create_project_bundle core
+    create_project_bundle web
+    create_project_bundle web-server
+    create_project_bundle wtk
+    create_project_bundle wtk-terra
+    create_project_bundle charts
+    echo "done"
 
     ## Bundle up the release artifacts
     printf "%-*s" 50 "Packaging release..."
