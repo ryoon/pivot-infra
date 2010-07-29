@@ -34,7 +34,7 @@ sign_pom_bundle() {
     local name=$1
     sign_file $bundle_root/$name/pom.xml
     cp $bundle_root/$name/pom.xml.asc $bundle_root/$name/$name-$version.pom.asc
-    rm $bundle_root/$name/pom.xml.asc    
+    rm $bundle_root/$name/pom.xml.asc
     cp $bundle_root/$name/pom.xml.sha1 $bundle_root/$name/$name-$version.pom.sha1
     rm $bundle_root/$name/pom.xml.sha1
 }
@@ -52,9 +52,9 @@ create_bundle() {
 }
 
 create_project_bundle() {
-    local name=$1    
+    local name=$1
     mkdir $bundle_root/pivot-$name
-    cp $name/pom.xml $bundle_root/pivot-$name/
+    sed "s/\${version}/$version/" < $name/pom.xml > $bundle_root/pivot-$name/pom.xml
     cp lib/pivot-$name-$version.jar $bundle_root/pivot-$name/
     cp lib/pivot-$name-$version-sources.jar $bundle_root/pivot-$name/
     sign_jar_bundle pivot-$name
@@ -189,7 +189,8 @@ create_release() {
     
     # Generate the root Maven bundle
     mkdir $bundle_root/pivot
-    cp pom.xml $bundle_root/pivot/
+    sed "s/\${version}/$version/" < pom.xml > $bundle_root/pivot/pom.xml
+    
     sign_pom_bundle pivot
     create_bundle pivot
     
