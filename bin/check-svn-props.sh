@@ -19,7 +19,7 @@
 function check-svn-props() {
     for f in `find . -type f | grep -Ev '(.svn|/\.)'` ; do
         ## Get the mime type of the file
-        MIME_TYPE=`file -b --mime-type $f`
+        MIME_TYPE=`file -bi $f`
 
         ## Extract the main type and subtype
         INDEX=`expr index "$MIME_TYPE" '/'`
