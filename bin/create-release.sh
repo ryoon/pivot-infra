@@ -27,7 +27,7 @@ bundle_root=maven/bundle
 sign_file() {
     local name=$1
     gpg --passphrase $passphrase --armor --detach-sig --quiet --yes $name &> /dev/null
-    openssl sha1 $name | sed 's/.*(\(.*\))= \(.*\)$/\2/' > $name.sha1
+    openssl sha1 $name | sed 's/.*(\(.*\))= \(.*\)$/\2/' | tr -d '\n' > $name.sha1
 }
 
 sign_pom_bundle() {
@@ -178,22 +178,22 @@ create_release() {
     ## Return to the base dir
     popd &> /dev/null
     popd &> /dev/null
-    
+
     ## Generate the Maven bundles
     printf "%-*s" 50 "Generating Maven bundles..."
     ant package-sources &> /dev/null
 
-    ## Clean up any previous Maven artifacts    
+    ## Clean up any previous Maven artifacts
     rm -Rf $bundle_root
     mkdir -p $bundle_root
-    
+
     # Generate the root Maven bundle
     mkdir $bundle_root/pivot
     sed "s/\${version}/$version/" < pom.xml > $bundle_root/pivot/pom.xml
-    
+
     sign_pom_bundle pivot
     create_bundle pivot
-    
+
     # Generate the Maven project bundles
     create_project_bundle core
     create_project_bundle web
