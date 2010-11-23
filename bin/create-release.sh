@@ -44,6 +44,7 @@ sign_jar_bundle() {
     sign_pom_bundle $name
     sign_file $bundle_root/$name/$name-$version.jar
     sign_file $bundle_root/$name/$name-$version-sources.jar
+    sign_file $bundle_root/$name/$name-$version-javadoc.jar
 }
 
 create_bundle() {
@@ -57,6 +58,7 @@ create_project_bundle() {
     sed "s/\${version}/$version/" < $name/pom.xml > $bundle_root/pivot-$name/pom.xml
     cp lib/pivot-$name-$version.jar $bundle_root/pivot-$name/
     cp lib/pivot-$name-$version-sources.jar $bundle_root/pivot-$name/
+    cp lib/pivot-$name-$version-javadoc.jar $bundle_root/pivot-$name/
     sign_jar_bundle pivot-$name
 
     create_bundle pivot-$name
@@ -182,6 +184,7 @@ create_release() {
     ## Generate the Maven bundles
     printf "%-*s" 50 "Generating Maven bundles..."
     ant package-sources &> /dev/null
+    ant package-javadoc &> /dev/null
 
     ## Clean up any previous Maven artifacts
     rm -Rf $bundle_root
