@@ -192,7 +192,7 @@ create_release() {
 
     # Generate the root Maven bundle
     mkdir $bundle_root/pivot
-    sed "s/\${version}/$version/" < pom.xml > $bundle_root/pivot/pom.xml
+    sed "s/@VERSION@/$version/" < pom.xml > $bundle_root/pivot/pom.xml
 
     sign_pom_bundle pivot
     create_bundle pivot
