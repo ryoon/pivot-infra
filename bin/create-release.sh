@@ -54,8 +54,8 @@ create_bundle() {
 
 create_project_bundle() {
     local name=$1
-    mkdir $bundle_root/pivot-$name
-    sed "s/\${version}/$version/" < $name/pom.xml > $bundle_root/pivot-$name/pom.xml
+    mkdir $bundle_root/pivot-$name    
+    sed "s/@VERSION@/$version/" < $name/pom.xml > $bundle_root/pivot-$name/pom.xml
     cp lib/pivot-$name-$version.jar $bundle_root/pivot-$name/
     cp lib/pivot-$name-$version-sources.jar $bundle_root/pivot-$name/
     cp lib/pivot-$name-$version-javadoc.jar $bundle_root/pivot-$name/
