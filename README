@@ -1,0 +1,18 @@
+
+Infra
+
+This folder contains all the infrastructure stuff (scripts, etc) required to check Pivot sources, and all other steps needed to create a Release.
+
+  There are some subdirectories here:
+
+     bin/
+       UNIX shell scripts
+
+     deb/
+       Stuff required to create a Debian package (.deb) for Pivot
+
+     rpm/
+       Stuff required to create a Red Hat package (.rpm) for Pivot
+
+
+
