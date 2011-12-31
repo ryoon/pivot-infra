@@ -65,21 +65,65 @@ create_project_bundle() {
 }
 
 create_release() {
-    ## TODO Check existence of JAVA_HOME
+    ## Check existence of JAVA_HOME
+    if [ -z "$JAVA_HOME" ]; then
+        echo "error, must specify a value for JAVA_HOME"
+        echo "Build failed"
+        echo
+        exit 1
+    else
+        echo "using this as JAVA_HOME: $JAVA_HOME"
+    fi
 
-    ## TODO Check existence of RAT_LIB
+    ## Check existence of RAT_LIB
+    if [ -z "$RAT_LIB" ]; then
+        echo "error, must specify a value for RAT_LIB"
+        echo "Build failed"
+        echo
+        exit 1
+    else
+        echo "using this as RAT_LIB: $RAT_LIB"
+    fi
 
-    ## TODO Check that we're in the right folder
+    ## Check that we're in the right folder, the trunk folder
+    if [ -e './build.xml' ]; then
+        echo "the ant build file exists in the current folder"
+    else
+        echo "error, the ant build file does not exist in the current folder"
+        echo "Build failed"
+        echo
+        exit 1
+    fi
 
-    ## TODO Check for conflicting release.tar.gz
-    rm -f release.tar.gz
+    ## Check for conflicting release.tar.gz
+    # rm -f release.tar.gz
+    if [ -e './release.tar.gz' ]; then
+        echo "error, a previous release artifact exists"
+        echo "Build failed"
+        echo
+        exit 1
+    fi
 
     ## Location where we'll store the artifacts
-    tmp="/tmp/$(basename $0).$$.tmp"
+    tmp="$TEMP_DIR/$(basename $0).$$.tmp"
 
-    ## TODO Check for existing tmp dir
+    ## Check for existing tmp dir
+    if [ ! -d "$TEMP_DIR" ]; then
+        echo "error, a temp folder does not exists"
+        echo "Build failed"
+        echo
+        exit 1
+    fi
 
-    ## TODO test that GPG keys are set up
+    ## test that GPG keys are set up
+    if [ -z "gpg --list-keys $GPG_KEY_EMAIL" ]; then
+        echo "error, must set a GPG Key for the mail address set"
+        echo "Build failed"
+        echo
+        exit 1
+    else
+        echo "using the GPG Key associated to this mail address: $GPG_KEY_EMAIL"
+    fi
 
     ## Get the GPG passphrase
     printf "Enter GPG passphrase: "
