@@ -11,6 +11,9 @@ This folder contains all the infrastructure stuff (scripts, etc) required to che
      deb/
        Stuff required to create a Debian package (.deb) for Pivot
 
+     doap/
+       Stuff related to DOAP files for Pivot, see http://projects.apache.org/doap.html
+
      lib/
        Utility libraries, like RAT
 
