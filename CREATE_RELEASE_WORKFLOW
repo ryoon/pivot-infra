@@ -51,7 +51,11 @@ svn status -u
 
 
 4 - Check svn properties
-From the trunk folder, for example run:
+From the trunk folder, run:
+ant clean
+to cleanup previous build artifacts.
+
+Then check svn properties, for example run:
 ../infra/bin/check-svn-props.sh
 note that output here could be long, so could be better to redirect its output to a file (for example svn-props.out),
 so for example the previous command line could become:
@@ -62,11 +66,18 @@ Note: remember to NOT commit this file in svn.
 Open that file with a text editor, and fix the MIME Type in every line containing "??" (without quotes) .
 A sample of usual types is:
 bxml - text/xml
+css - text/css
 gif - image/gif
 ico - image/x-icon
-jar - application/java-archive , but RAT seems to prefer application/zip
+jar - application/java-archive , but RAT and svn (from the script just run) seems to return application/zip
+      or application/x-java-archive
+jar.pack.gz - application/x-java-pack200
+jnlp - application/x-java-jnlp-file
 jpg - image/jpeg
+json - application/json
 png - image/png
+svg - image/svg+xml
+zip - application/zip
 
 
 Then, execute all commands contained in it, for example rename to .sh and make it executable do an chmod +x on it.
@@ -138,6 +149,5 @@ Important: the release content is really needed, but the maven content could be 
 10 - Send the Mail for the Vote
 Finally, send the mail to Pivot Developers mailing list (dev@pivot.apache.org) for the vote,
 with a minimum duration time of 5 days.
-
 
 
