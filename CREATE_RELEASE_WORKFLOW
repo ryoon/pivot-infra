@@ -37,8 +37,12 @@ infra/bin/setup-environment-sample.sh
 
 Note that currently you need to copy its contents and paste in a terminal, or in your profile file.
 
-Note: of course <release-number> in this document has to be changed with the real release version,
-for example currenly it's 2.0.2 .
+Of course <release-number> in this document has to be changed with the real release version,
+for example currently it's 2.0.2 .
+A good trick could be even to define a shell variable for this, like:
+export PIVOT_RELEASE=<release-number>
+and then use it.
+
 
 
 Generated artifacts will be digitally signed by PGP / GPG, so the Release Manager MUST have a valid PGP / GPG sign (on its apache.org mail address), and must be published to some public key server (for example the MIT Key server), and that sign must be appended at the and of the KEYS file (under the trunk) and committed.
