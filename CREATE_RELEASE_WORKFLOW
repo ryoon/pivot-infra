@@ -134,11 +134,11 @@ ssh smartini@people.apache.org
 
 From the maven folder, for example run:
 scp ./* smartini@people.apache.org:~/public_html/pivot-2.0.2_maven/
-currently it contains approx. 20 Mb af files.
+currently it contains approx. 20 Mb of files.
 
 From the release folder, for example run:
 scp ./* smartini@people.apache.org:~/public_html/pivot-2.0.2_release/
-currently it contains approx. 60 Mb af files.
+currently it contains approx. 60 Mb of files.
 
 Than, verify with a Web Browser that all stuff has been copied and published, for example from here:
 http://people.apache.org/~smartini/
@@ -148,6 +148,7 @@ Important: the release content is really needed, but the maven content could be 
 
 10 - Send the Mail for the Vote
 Finally, send the mail to Pivot Developers mailing list (dev@pivot.apache.org) for the vote,
-with a minimum duration time of 5 days.
+with a minimum duration time of 3 days or 72 hours (and usually between 5 / max 7 days),
+but if possible with a week-end inside so people have more time to test all.
 
 
