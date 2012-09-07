@@ -89,6 +89,7 @@ js - application/javascript , or its obsolete value text/javascript
 jnlp - application/x-java-jnlp-file
 jpg - image/jpeg
 json - application/json
+md, mkd, markdown - text/x-markdown (sub-class-of type="text/plain")
 pdf - application/pdf
 png - image/png
 scala - text/x-scala
