@@ -1,0 +1,72 @@
+
+Infra - POST_RELEASE_WORKFLOW
+
+This file contains a description of all optional (but useful) steps to do after a Pivot (official, public) Release.
+
+Use it only as a sample.
+
+Note that all scripts are UNIX shell scripts, so you need a compatible environment, with installed even:
+- Apache Subversion client
+- Java JDK installed and other jar libraries dependencies, as required by Pivot
+- Apache Ant, as required by Pivot
+- Apache Maven (optional)
+- Apache RAT, from Apache, currently from here: http://incubator.apache.org/rat/
+  or use the jar under infra/lib (only for convenience put here)
+
+Memory and disk space required:
+- 512 MB of RAM to do the build
+- 1 GB of free disk space for downloaded files and temp and build artifacts
+
+
+Required steps:
+
+1 - Publish Pivot jars in Central Maven Repository:
+for this, you need necessary rights in ASF
+// TODO ...
+
+
+2 - Update dependencies in experimental projects under /skunk , like:
+- pivot-archetype-quickstart, update dependencies in src/main/resources/archetype-resources/pom.xml
+
+
+3 - Update dependencies in related projects under Apache-Extras:
+for a list of all pivot-related projects there, use:
+http://code.google.com/a/apache-extras.org/hosting/search?q=pivot&btn=Search+projects
+
+The operations to do are (most of times) these:
+update dependencies, rebuild all, tag sources, 
+then publish updated jars for the project and make them features so it's easy to see/download
+
+These are main subprojects to update:
+- pivot-jfree,
+  important because it's a common requirement for doing charts with Pivot
+- pivot-common, 
+  important because it share Pivot jars and other common things to many other pivot-related projects here,
+  and it contains even other common subprojects and dependencies that could be useful to others here,
+  and even the pivot-maven-archetype jar to download it from here just for convenience
+- pivot-contrib,
+  with some user-contributed projects ... so this usually if updated by our users
+- pivot-demos,
+  with inside an exploded pivot-demos-jfree,
+  the wiki page Pivot_JFree_Demos to test "live" from here Pivot-JFree Demos (Applet),
+  the pivot-demos-jfree.war to download it from here just for convenience
+- pivot-extras,
+  with some extra inside
+- pivot-multilang,
+  with some common and specific subprojects for Scala and Groovy (and maybe for others JVM languages) projects,
+  normal and even maven projects (and maybe Gradle and Sbt projects)
+- pivot-stuff,
+  note that this contains many subprojects inside, like:
+  apache-pivot-grails plugin, pivot-java-test-maven, 
+  pivot-stuff-extensions, 
+  pivot-stuff-media, pivot-stuff-validation, 
+  pivot-stuff-web, 
+  scala-use-pivot2, 
+  and others ...
+- etc ...
+
+
+4 - Update Demos in other sites (usually not handled by us, but by some our users):
+https://cwiki.apache.org/confluence/display/PIVOT/Other+Demos
+
+
