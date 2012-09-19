@@ -45,8 +45,8 @@ export CLASSPATH=$CLASSPATH:$MAVEN_ANT_TASKS_LIB
 export CLASSPATH=$CLASSPATH:$RAT_LIB
 
 # export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/tools.jar
-# export CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/javaws.jar
-# export CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/plugin.jar
+export CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/javaws.jar
+export CLASSPATH=$CLASSPATH:$JAVA_HOME/jre/lib/plugin.jar
 
 
 # Setup PATH
