@@ -29,7 +29,7 @@ so now under the current folder you have all under the newly created folder "piv
 2 - Setup environment
 The Release process uses the usual pivot builds to generate binary artifacts, 
 so it's better to update all required tools before proceed, 
-for example at the moment the latest JDK for Java 6 is JDK 6 Update 32.
+for example at the moment the latest JDK for Java 6 is JDK 6 Update 37.
 
 Some environment variables are needed, so you need to define them accordingly to your environment.
 As a sample you can look at (but please do NOT commit changes to it):
@@ -66,6 +66,8 @@ svn status -u
 From the trunk folder, run:
 ant clean
 to cleanup previous build artifacts.
+Note that if Pivot projects (in that folder) has been imported in an IDE (like Eclipse) and compiled there,
+could exist a bin folder in any project, but it has to be deleted before the next step.
 
 Then check svn properties, for example run:
 ../infra/bin/check-svn-props.sh
