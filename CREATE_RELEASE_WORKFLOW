@@ -29,7 +29,7 @@ so now under the current folder you have all under the newly created folder "piv
 2 - Setup environment
 The Release process uses the usual pivot builds to generate binary artifacts, 
 so it's better to update all required tools before proceed, 
-for example at the moment the latest JDK for Java 6 is JDK 6 Update 38.
+for example at the moment the latest JDK for Java 6 is JDK 6 Update 41.
 
 Some environment variables are needed, so you need to define them accordingly to your environment.
 As a sample you can look at (but please do NOT commit changes to it):
@@ -73,7 +73,7 @@ Then check svn properties, for example run:
 ../infra/bin/check-svn-props.sh
 note that output here could be long, so could be better to redirect its output to a file (for example svn-props.out),
 so for example the previous command line could become:
-../infra/bin/check-svn-props.sh  > ../svn-props.out
+../infra/bin/check-svn-props.sh  > ../../svn-props.out
 and after some minute you can open that file and look at its contents (and edit it to fix things, as explained later).
 Note: remember to NOT commit this file in svn.
 
@@ -116,7 +116,7 @@ svn update
 Optional but useful to avoid go to the end and have some files missing license headers, so all steps has to be redone ...
 
 From the trunk folder, for example run:
-java -jar ../infra/lib/apache-rat-0.8.jar . > ../rat.out
+java -jar ../infra/lib/apache-rat-0.8.jar . > ../../rat.out
 
 Then verify its contents, fix what is needed, commit it, and restart from step 3 .
 Note: remember to NOT commit the rat.out file in svn.
@@ -144,7 +144,7 @@ MOVE the folder maven at the same level of the newly created folder, and rename 
 
 
 8 - Cleanup unnecessary files/folders from the trunk
-Delete all unnecessary files and folders from trunk (for example all seen in step 6), demoving it by hand or with a script, or maybe doing an svn revert.
+Delete all unnecessary files and folders from trunk (for example all seen in step 6), removing it by hand or with a script, or maybe doing an svn revert.
 
 
 9 - Copy artifacts to Apache People Server
