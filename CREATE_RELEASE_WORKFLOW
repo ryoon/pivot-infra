@@ -29,7 +29,7 @@ so now under the current folder you have all under the newly created folder "piv
 2 - Setup environment
 The Release process uses the usual pivot builds to generate binary artifacts, 
 so it's better to update all required tools before proceed, 
-for example at the moment the latest JDK for Java 6 is JDK 6 Update 41.
+for example at the moment the latest JDK for Java 6 is JDK 6 Update 43.
 
 Some environment variables are needed, so you need to define them accordingly to your environment.
 As a sample you can look at (but please do NOT commit changes to it):
@@ -64,7 +64,7 @@ svn status -u
 
 4 - Check svn properties
 From the trunk folder, run:
-ant clean
+clear && ant clean
 to cleanup previous build artifacts.
 Note that if Pivot projects (in that folder) has been imported in an IDE (like Eclipse) and compiled there,
 could exist a bin folder in any project, but it has to be deleted before the next step.
@@ -125,6 +125,9 @@ Note: remember to NOT commit the rat.out file in svn.
 6 - Create the tag in svn
 From the root folder (the parent folder of trunk), for example run:
 ./infra/bin/create-tag.sh <release-number>
+for tagging code from the trunk, or
+./infra/bin/create-tag_maintenance.sh <release-number>
+for tagging code from branches/2.0.x .
 
 Important: if the tag already exist it will not be possible to proceed successfully, so you have to delete the tag by hand, and re-execute this command.
 

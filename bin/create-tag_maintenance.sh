@@ -24,7 +24,7 @@ create_tag() {
     fi
 
     tag=$1
-    svnpath=trunk
+    svnpath=branches/2.0.x
 
     ## Check that we're in an SVN repository folder
     svn info &> /dev/null
@@ -78,7 +78,7 @@ create_tag() {
 
     ## Remove hidden files and folders from the release
     printf "%-*s" 50 "Removing hidden files and folders from tag..."
-    find tags/$tag -name \.\* | grep -v \.svn | xargs svn rm &> /dev/null
+    find tags/$tag -name \.\* | grep -v \.svn | xargs svn rm --force &> /dev/null
     if [ $? -ne 0 ]; then
         echo "error"
         echo "SVN remove failed"
