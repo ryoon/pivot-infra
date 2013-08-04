@@ -1,7 +1,7 @@
 
 Infra - POST_RELEASE_WORKFLOW
 
-This file contains a description of all optional (but useful) steps to do after a Pivot (official, public) Release.
+This file contains a description of all optional (but useful) steps to do AFTER a Pivot (official, public) Release.
 
 Use it only as a sample.
 
@@ -20,16 +20,30 @@ Memory and disk space required:
 
 Required steps:
 
-1 - Publish Pivot jars in Central Maven Repository:
+1 - Mandatory: Publish Binary and Source artifacts in Apache Release repository (svn), here:
+
+https://dist.apache.org/repos/dist/release/pivot
+
+and even release-notes html file (get some parts of it from JIRA Release Notes).
+Then mark that release as Released in JIRA.
+
+
+2 - Not mandatory, but important: Publish Pivot jars in Central Maven Repository:
+
 for this, you need necessary rights in ASF
 // TODO ...
 
 
-2 - Update dependencies in experimental projects under /skunk , like:
+3 - Not mandatory, but important: Publish related JavaDoc and updated Demos/Tutorials in Web Site,
+and then maybe cleanup old JavaDoc files. Remember to test Demos/Tutorials.
+If possible, keep existing binary artifacts for older versions.
+
+
+4 - Optional: Update dependencies in experimental projects under /skunk , like:
 - pivot-archetype-quickstart, update dependencies in src/main/resources/archetype-resources/pom.xml
 
 
-3 - Update dependencies in related projects under Apache-Extras:
+5 - Optional: Update dependencies in related projects under Apache-Extras:
 for a list of all pivot-related projects there, use:
 http://code.google.com/a/apache-extras.org/hosting/search?q=pivot&btn=Search+projects
 
@@ -66,7 +80,7 @@ These are main subprojects to update:
 - etc ...
 
 
-4 - Update Demos in other sites (usually not handled by us, but by some our users):
+6 - Optional: Update Demos in other sites (usually not handled by us, but by some our users):
 https://cwiki.apache.org/confluence/display/PIVOT/Other+Demos
 
 
