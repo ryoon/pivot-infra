@@ -29,9 +29,19 @@ Then mark that release as Released in JIRA.
 
 
 2 - Not mandatory, but important: Publish Pivot jars in Central Maven Repository:
+Log in into Central Maven Repository Manager at: https://repository.apache.org/
+Select Repositories, then Releases (IMPORTANT), and in the related lower half of the page do the following steps
+for any pivot-<release>-bundle*.zip generated (unzip any in a dedicated subfolder, 
+starting from the root one, without jars inside):
+- select Artifact Upload
+- Gav Definition, choose From POM, and select the pom.xml file in the subproject folder
+- Select Artifact(s) to Upload, and choose the jar and Add Artifact 
+  (then the same for related -javadoc and -sources jars if present), and Upload Artifact(s)
 
-for this, you need necessary rights in ASF
-// TODO ...
+Verify uploads, doing a Search and ensure that all are in the right place and with the right classifier.
+Another check could be done by manually browsing to this folder:
+http://repository.apache.org/content/repositories/releases/org/apache/pivot/
+or even on https if needed.
 
 
 3 - Not mandatory, but important: Publish related JavaDoc and updated Demos/Tutorials in Web Site,
