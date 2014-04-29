@@ -116,7 +116,7 @@ svn update
 Optional but useful to avoid go to the end and have some files missing license headers, so all steps has to be redone ...
 
 From the trunk folder, for example run:
-java -jar ../infra/lib/apache-rat-0.8.jar . > ../../rat.out
+java -jar ../infra/lib/apache-rat-<rat-version>.jar . > ../../rat.out
 
 Then verify its contents, fix what is needed, commit it, and restart from step 3 .
 Note: remember to NOT commit the rat.out file in svn.
