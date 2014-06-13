@@ -29,7 +29,7 @@ so now under the current folder you have all under the newly created folder "piv
 2 - Setup environment
 The Release process uses the usual pivot builds to generate binary artifacts, 
 so it's better to update all required tools before proceed, 
-for example at the moment the latest for Java 6 is JDK 6 Update 45, and for Java 7 is JDK 7 Update 55.
+for example at the moment the latest for Java 6 is JDK 6 Update 45, and for Java 7 is JDK 7 Update 60.
 
 Some environment variables are needed, so you need to define them accordingly to your environment.
 As a sample you can look at (but please do NOT commit changes to it):
@@ -38,7 +38,7 @@ infra/bin/setup-environment-sample.sh
 Note that currently you need to copy its contents and paste in a terminal, or in your profile file.
 
 Of course <release-number> in this document has to be changed with the real release version,
-for example currently it's 2.1.0 in trunk, and 2.0.4 in branches/2.0.x .
+for example currently it's 2.1.0 in trunk, and 2.0.5 in branches/2.0.x .
 A good trick could be even to define a shell variable for this, like:
 export PIVOT_RELEASE=<release-number>
 and then use it.
