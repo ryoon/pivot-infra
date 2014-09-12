@@ -29,7 +29,7 @@ so now under the current folder you have all under the newly created folder "piv
 2 - Setup environment
 The Release process uses the usual pivot builds to generate binary artifacts, 
 so it's better to update all required tools before proceed, 
-for example at the moment the latest for Java 6 is JDK 6 Update 45, and for Java 7 is JDK 7 Update 60.
+for example at the moment the latest for Java 6 is JDK 6 Update 45, and for Java 7 is JDK 7 Update 67.
 
 Some environment variables are needed, so you need to define them accordingly to your environment.
 As a sample you can look at (but please do NOT commit changes to it):
