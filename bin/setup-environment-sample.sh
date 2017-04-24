@@ -24,12 +24,13 @@ export TEMP_DIR=/tmp
 export OPT=/opt
 
 # export ANT_HOME=$OPT/apache-ant-1.8.4
-export ANT_HOME=$OPT/apache-ant-1.9.6
+export ANT_HOME=$OPT/apache-ant-1.9.9
+# export ANT_HOME=$OPT/apache-ant-1.10.1
 export JAVA_HOME=$OPT/jdk1.6.0_45
 # export JAVA_HOME=$OPT/jdk1.7.0_80
-# export JAVA_HOME=$OPT/jdk1.8.0_60
-# export MAVEN_HOME=$OPT/apache-maven-3.2.5
-export MAVEN_HOME=$OPT/apache-maven-3.3.3
+# export JAVA_HOME=$OPT/jdk1.8.0_131
+export MAVEN_HOME=$OPT/apache-maven-3.3.9
+# export MAVEN_HOME=$OPT/apache-maven-3.5.0
 
 export JAVALIB_DIR=$OPT/javalib
 

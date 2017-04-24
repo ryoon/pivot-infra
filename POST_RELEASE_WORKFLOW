@@ -53,7 +53,7 @@ If possible, keep existing binary artifacts for older versions.
 - pivot-archetype-quickstart, update dependencies in src/main/resources/archetype-resources/pom.xml
 
 
-5 - Optional: Update dependencies in related projects under Apache-Extras:
+5 - OBSOLETE: Optional: Update dependencies in related projects under Apache-Extras:
 for a list of all pivot-related projects there, use:
 http://code.google.com/a/apache-extras.org/hosting/search?q=pivot&btn=Search+projects
 
