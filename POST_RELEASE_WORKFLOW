@@ -88,7 +88,7 @@ These are main subprojects to update:
   scala-use-pivot2, 
   and others ...
 - etc ...
-
+but note that they are all deprecated.
 
 6 - Optional: Update Demos in other sites (usually not handled by us, but by some our users):
 https://cwiki.apache.org/confluence/display/PIVOT/Other+Demos
