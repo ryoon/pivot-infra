@@ -23,20 +23,18 @@
 export TEMP_DIR=/tmp
 export OPT=/opt
 
-# export ANT_HOME=$OPT/apache-ant-1.8.4
-export ANT_HOME=$OPT/apache-ant-1.9.9
-# export ANT_HOME=$OPT/apache-ant-1.10.1
-export JAVA_HOME=$OPT/jdk1.6.0_45
-# export JAVA_HOME=$OPT/jdk1.7.0_80
+# export ANT_HOME=$OPT/apache-ant-1.10.12
+export ANT_HOME=$OPT/apache-ant-1.10.14
 # export JAVA_HOME=$OPT/jdk1.8.0_131
-export MAVEN_HOME=$OPT/apache-maven-3.3.9
-# export MAVEN_HOME=$OPT/apache-maven-3.5.0
+export JAVA_HOME=$OPT/jdk-11
+# export MAVEN_HOME=$OPT/apache-maven-3.6.3
+export MAVEN_HOME=$OPT/apache-maven-3.9.5
 
 export JAVALIB_DIR=$OPT/javalib
 
-export JUNIT_LIB=$JAVALIB_DIR/junit-4.12.jar
+export JUNIT_LIB=$JAVALIB_DIR/junit-4.13.2.jar:$JAVALIB_DIR/hamcrest-core-1.3.jar
 export MAVEN_ANT_TASKS_LIB=$JAVALIB_DIR/maven-ant-tasks-2.1.3.jar
-export RAT_LIB=$JAVALIB_DIR/apache-rat-0.11.jar
+export RAT_LIB=$JAVALIB_DIR/apache-rat-0.13.jar
 
 export GPG_KEY_EMAIL=smartini@apache.org
 
